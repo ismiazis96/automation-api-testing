@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "chai": "^4.5.0",
+    "mocha": "^11.1.0",
+    "supertest": "^7.1.0"
+  }
+}
