@@ -1,0 +1,157 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-05-04T15:20:35.534Z",
+    "end": "2025-05-04T15:20:39.884Z",
+    "duration": 4350,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d4073533-4ac1-4fa0-908b-19a470cc5f05",
+      "title": "",
+      "fullFile": "C:\\laragon\\www\\afteroffice\\automation-api-testing\\booking-e2e.spec.js",
+      "file": "\\booking-e2e.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9341e84c-d25f-4413-8dab-4c4f9cdf467e",
+          "title": "Restfull API Booker",
+          "fullFile": "C:\\laragon\\www\\afteroffice\\automation-api-testing\\booking-e2e.spec.js",
+          "file": "\\booking-e2e.spec.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create Token with credential valid",
+              "fullTitle": "Restfull API Booker Create Token with credential valid",
+              "timedOut": false,
+              "duration": 1186,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(5000);\nconst response = await api\n.post(\"/auth\")\n.set(header)\n.send(authData)\n.expect(200);\nconsole.log(response.body);\nexpect(response.body).to.have.property(\"token\");\ntoken = response.body.token;",
+              "err": {},
+              "uuid": "4a865287-834e-4aa7-bf5c-157c326b50c1",
+              "parentUUID": "9341e84c-d25f-4413-8dab-4c4f9cdf467e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a new booking",
+              "fullTitle": "Restfull API Booker Create a new booking",
+              "timedOut": false,
+              "duration": 1025,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(10000);\nconst response = await api\n.post(\"/booking\")\n.set(\"Content-Type\", \"application/json\")\n.set(\"Accept\", \"application/json\")\n.send(bookingData)\n.expect(200);\nconsole.log(response.status,response.body);\nexpect(response.body).to.have.property(\"bookingid\");\nbookingId = response.body.bookingid;",
+              "err": {},
+              "uuid": "0417cb7a-fa60-4c48-bc03-0a92d7a2be76",
+              "parentUUID": "9341e84c-d25f-4413-8dab-4c4f9cdf467e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get Booking ID",
+              "fullTitle": "Restfull API Booker Get Booking ID",
+              "timedOut": false,
+              "duration": 1030,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(5000);\n//await new Promise(resolve => setTimeout(resolve, 1000)); // wait 1 detik\nif (!bookingId) {\n    throw new Error(\"Booking ID tidak tersedia\");\n}\nconst response = await api\n.get(`/booking/${bookingId}`)\n.set(\"Accept\", \"application/json\")\n.expect(200);\n// console.log(\"Status:\", response.status);\n// console.log(\"Body:\", response.body);\nif (response.status === 200) {\n    expect(response.body.firstname).to.equal(bookingData.firstname);\n    expect(response.body.lastname).to.equal(bookingData.lastname);\n    //console.log(response.body.firstname);\n} else {\n    console.error(\"GET Booking gagal. Status:\", response.status);\n}",
+              "err": {},
+              "uuid": "766c8938-4b72-4f43-a815-37ce1fb8bbcf",
+              "parentUUID": "9341e84c-d25f-4413-8dab-4c4f9cdf467e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete BookingId with token",
+              "fullTitle": "Restfull API Booker Delete BookingId with token",
+              "timedOut": false,
+              "duration": 1084,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(5000);\nconst response = await api\n.delete(`/booking/${bookingId}`)\n.set(\"Cookie\", [`token=${token}`])\n.expect(201);\nexpect(response.text).to.include(\"Created\");",
+              "err": {},
+              "uuid": "4238a159-e12b-4d11-ae5c-8bceaece256a",
+              "parentUUID": "9341e84c-d25f-4413-8dab-4c4f9cdf467e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4a865287-834e-4aa7-bf5c-157c326b50c1",
+            "0417cb7a-fa60-4c48-bc03-0a92d7a2be76",
+            "766c8938-4b72-4f43-a815-37ce1fb8bbcf",
+            "4238a159-e12b-4d11-ae5c-8bceaece256a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4325,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.1.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
