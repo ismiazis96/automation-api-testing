@@ -1,0 +1,6 @@
+# Folder node_modules (hasil install npm)
+node_modules/
+# cypress/reports/
+# File log atau cache sementara
+*.log
+.cache/
